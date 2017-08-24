@@ -9,7 +9,7 @@ It creates a keyspace(if necessary), loads migration scripts from a resource fol
 
 Put pillar scripts somewhere in `resources` folder. For example in `src/test/resources/test-migrations`.
 
-[`src/test/resources/test-migrations/1_create_test_table1.cql`](link):
+[`src/test/resources/test-migrations/1_create_test_table1.cql`](src/test/resources/test-migrations/1_create_test_table1.cql):
 ```
 -- description: create test table1
 -- authoredAt: 1
