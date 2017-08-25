@@ -27,7 +27,7 @@ object FileLoader {
           Paths.get(uri)
       }
     }
-    Files.walk(root, 1).iterator.asScala.filterNot(_ == root).toList
+    Files.walk(root, 1).iterator.asScala.filterNot(_ == root).toList.sorted
   }
 
   def entriesAt(path: String): List[Entry] = {
