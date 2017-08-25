@@ -1,4 +1,4 @@
-# Cassam
+# Cassam [![Build Status](https://travis-ci.org/evolution-gaming/cassam.svg?branch=master)](https://travis-ci.org/evolution-gaming/cassam)[![Coverage Status](https://coveralls.io/repos/github/evolution-gaming/cassam/badge.svg?branch=master)](https://coveralls.io/github/evolution-gaming/cassam?branch=master) [![Coverage Status](https://coveralls.io/repos/evolution-gaming/akka-tools/badge.svg)](https://coveralls.io/r/evolution-gaming/akka-tools) [ ![version](https://api.bintray.com/packages/evolutiongaming/maven/akka-tools/images/download.svg) ](https://bintray.com/evolutiongaming/maven/akka-tools/_latestVersion)
 
 Cassam(for Cassandra Migrator) is a simple library for cassandra migrations based on [pillar](https://github.com/comeara/pillar).
 
