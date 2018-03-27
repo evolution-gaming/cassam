@@ -1,15 +1,13 @@
-# by default Travis uses JDK 8u31, which is much too old for Scala 2.12 (versions before 8u102 have issues - https://issues.scala-lang.org/browse/SI-9828)
 dist: trusty
 sudo: false
-
 language: scala
-
 scala:
-  - 2.12.3
-  - 2.11.11
-
+- 2.12.3
+- 2.11.11
 jdk: oraclejdk8
-
 script: sbt ++$TRAVIS_SCALA_VERSION clean coverage test
-
-after_success: sbt ++$TRAVIS_SCALA_VERSION coverageReport coveralls
+after_success: sbt ++$TRAVIS_SCALA_VERSION coverageReport coveralls publish
+env:
+  global:
+  - secure: II+E5rKv3OIF+MjiIAw+kboiY01lUxRGILB+Jgrdb3N/eeWMIYvC55w2BAuYi3nxy6EXwCwRmOx815/7xa7152+b7DtRM8z1d4nHF6Z8wWOIj5LNaOmzV14iDBE0XUTlmesSWSBhInDUH9ilfF7HwEg0Lt0CzbH9A3ka9I+zbvzqmteyWnL8phpiE3+p5oR8W7CPwmSrSa3lIVAJ6PHIHNgH9pOlZuh4RBjvUaSM3LV0zANIcVDvBuSYsyQ1fk2Z3V6HJTkpEwNX9tHp77atuMxYrl/czjnBLQW9eFwhDaC1vNgqQMHjMA+CjwMCTcc0QLwheV4Y9BVYbO96gdwTanAjVItj+CBfF3e46WFy5K/PZaXHE3UGAXMgRks6RE9TzY4yNZdPvRGyyW31meFZ32oosavnpt08OFpXj1w/zEGaYVFWmivpDpUVNxzytW7fxjEvB/rGZLXhJ3oC+JB1ywa104xFaN/dGwep+uB5GpGUT8IqZE8bTGQ+Qi0HYqTwzp+DgxFIAkB7kFY3cIhOkDzlmorWsyP4adFwVhYxVv81BuZFX61tQz01c7R3Ct7lJi5IB4vdVRtas4PMold3WpsLnueGN4kfg44IrzWGna8WEUoEM9nS5irnTn28t0KyxF2bfmsFWnloHuamh1iNFI366/nUJP8tsWZXS6zkme4=
+  - secure: JpD0cu08DglQUu6Rh+sTo5IkRlWRwOz0Jd6d86xDU0riJ5Zw0Tmjyw1HSQ0y04Yw2ejcbs2GzZpz+ySOvgFlChsTEeVzBEnZGP7ibYrqKW0UgV4GO4JXdIxO8JIhRJvhJsg4Ry3nUMysPqyl7ddEm3roJIJl/znMm0QB24x9CPBsJ0WitMt7tbm+xj66NkjyH0PN5YyMaQtXYhPHFNRtpcu+9sHgDGn/faGQdbeLiuhHqLHDvdQ6fdkZNhwCA/DcnyKrJXIG4cYNEs5QAjDp/ToPvPWw8IHm3qDLkzPTzwgo8xEO2M2YoH71JtJJ93WZNUuHgkZlKNTFiWCIh2RUyoBM4/J7AA0FoJKxS/BMWnM8XvuB2mU/kxIlLGFQSmOIkZblbhs+8VMZAwsOy/MM+7Jrv9oespIkua895R7hGr05qVLjIwUXaT4tV6lJHc9kMAXcmvZmGGT7KGXFY6kJspLYR4CclrV9GM8nWJx5qESKGs+1SLe3xoqh7ck+VGiPwQPh3Ase5pU3jIAInyilDphbBgKG1xjxPpXm1XNdJht4ZjNNbdJsWSxFNZi3XpE7GsoipLfe2u0ebA+eq/KPEEYF3Kv8AV6rI2ilqgDKbZHVL9TZs3Wm5FtKGGltnRFfxj69NU0MI7WBuiYhMxbyl5RMtwztufgLsXEM/E4S4xo=
