@@ -21,7 +21,6 @@ class CassandraMigratorSpec extends FreeSpec with Matchers with MockFactory{
       new CassandraMigrator(testSettings).initKeyspace(session, strategy)
 
       verifyQueryOnce(keyspaceQuery(testSettings.keyspace, strategy), session)
-      verifyQueryOnce(migrationTableQuery(testSettings), session)
     }
 
     "executes migrations" in {
@@ -37,11 +36,12 @@ class CassandraMigratorSpec extends FreeSpec with Matchers with MockFactory{
 
       new CassandraMigrator(testSettings).migrate(session)
 
+      verifyQueryOnce(s"USE ${testSettings.keyspace}", session)
+      verifyQueryOnce(migrationTableQuery(testSettings), session)
       //check that two queries from migration files are executed
       verifyQueryOnce(
         "CREATE TABLE test_table1 (id text, data text, updated_at timestamp, PRIMARY KEY (id))",
         session)
-
       verifyQueryOnce(
         "CREATE TABLE test_table2 (id text, data text, updated_at timestamp, PRIMARY KEY (id))",
         session)
@@ -54,6 +54,13 @@ class CassandraMigratorSpec extends FreeSpec with Matchers with MockFactory{
   ): Unit = {
     (session.execute(_:String)).verify(query).once()
   }
+
+//  private def verifyQueryContains(
+//    value: String,
+//    session: Session
+//  ): Unit = {
+//    (session.execute(_:String)).verify(where { string: String => string.contains(value) }).once()
+//  }
 
   private def verifyQueryOnce(
     queryChecker: String => Boolean,

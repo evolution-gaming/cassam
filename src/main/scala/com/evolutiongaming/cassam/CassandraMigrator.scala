@@ -19,6 +19,8 @@ class CassandraMigrator(settings: MigratorSettings) {
     val scripts = FileLoader.entriesAt(settings.migrationScriptPath)
     val registry = parseScripts(scripts)
     val migrator = Migrator(registry, LoggerReporter, settings.migrationTable)
+    session.execute(s"USE ${settings.keyspace}")
+    migrator.createMigrationsTable(session, settings.keyspace)
     migrator.migrate(session)
   }
 
@@ -35,7 +37,7 @@ class CassandraMigrator(settings: MigratorSettings) {
     val scripts = FileLoader.entriesAt(settings.migrationScriptPath)
     val registry = parseScripts(scripts)
     val migrator = Migrator(registry, LoggerReporter, settings.migrationTable)
-    migrator.initialize(session, settings.keyspace, replicationStrategy)
+    migrator.createKeyspace(session, settings.keyspace, replicationStrategy)
   }
 
   /**
