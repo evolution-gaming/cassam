@@ -1,3 +1,6 @@
+# Deprecated!
+Consider using [this lib](https://github.com/evolution-gaming/pillar) instead
+
 # Cassam [![Build Status](https://travis-ci.org/evolution-gaming/cassam.svg?branch=master)](https://travis-ci.org/evolution-gaming/cassam)[![Coverage Status](https://coveralls.io/repos/github/evolution-gaming/cassam/badge.svg?branch=master)](https://coveralls.io/github/evolution-gaming/cassam?branch=master)
 
 Cassam(for Cassandra Migrator) is a simple library for cassandra migrations based on [pillar](https://github.com/comeara/pillar).
