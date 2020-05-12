@@ -1,14 +1,14 @@
 package com.evolutiongaming.cassam
 
-import java.util.Date
+import java.time.Instant
 
-import com.datastax.driver.core.Session
+import com.evolutiongaming.pillar.Session
 import com.typesafe.scalalogging.StrictLogging
-import de.kaufhof.pillar.{Migration, ReplicationStrategy, Reporter}
+import com.evolutiongaming.pillar.{Migration, ReplicationStrategy, Reporter}
 
 
 object LoggerReporter extends Reporter with StrictLogging {
-  def applying(migration: Migration): Unit = {
+  override def applying(migration: Migration): Unit = {
     logger.info(s"Applying ${migration.key}")
   }
   def initializing(session: Session, keyspace: String): Unit = {
@@ -17,10 +17,10 @@ object LoggerReporter extends Reporter with StrictLogging {
   def destroying(session: Session, keyspace: String): Unit = {
     logger.info(s"Destroying keyspace $keyspace")
   }
-  def reversing(migration: Migration): Unit = {
+  override def reversing(migration: Migration): Unit = {
     logger.info(s"Reversing ${migration.key}")
   }
-  def migrating(session: Session, dateRestriction: Option[Date]): Unit = {
+  override def migrating(session: Session, dateRestriction: Option[Instant]): Unit = {
     logger.info(s"Migrating, date restriction: $dateRestriction")
   }
   override def creatingKeyspace(session: Session, keyspace: String, replicationStrategy: ReplicationStrategy): Unit = {

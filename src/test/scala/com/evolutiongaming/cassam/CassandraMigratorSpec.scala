@@ -1,12 +1,13 @@
 package com.evolutiongaming.cassam
 
-import com.datastax.driver.core._
-import de.kaufhof.pillar
-import de.kaufhof.pillar.SimpleStrategy
+import com.datastax.driver.core.{ResultSet, Row, Statement}
+import com.evolutiongaming.pillar
+import com.evolutiongaming.pillar.{Session, SimpleStrategy}
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.{FreeSpec, Matchers}
+import org.scalatest.freespec.AnyFreeSpec
+import org.scalatest.matchers.should.Matchers
 
-class CassandraMigratorSpec extends FreeSpec with Matchers with MockFactory{
+class CassandraMigratorSpec extends AnyFreeSpec with Matchers with MockFactory{
   "CassandraMigrator" - {
     "creates a keyspace" in {
       val testSettings = MigratorSettings(

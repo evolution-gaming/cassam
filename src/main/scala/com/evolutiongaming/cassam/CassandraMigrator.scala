@@ -3,8 +3,7 @@ package com.evolutiongaming.cassam
 import java.io.ByteArrayInputStream
 import java.nio.charset.StandardCharsets
 
-import com.datastax.driver.core.Session
-import de.kaufhof.pillar.{Migrator, Parser, Registry, ReplicationStrategy}
+import com.evolutiongaming.pillar.{Migrator, Parser, Registry, ReplicationStrategy, Session}
 
 /**
   * Loads and executes migrations for cassandra

@@ -1,8 +1,8 @@
 package com.evolutiongaming.cassam
+import org.scalatest.freespec.AnyFreeSpec
+import org.scalatest.matchers.should.Matchers
 
-import org.scalatest.{FreeSpec, Matchers}
-
-class FileLoaderSpec extends FreeSpec with Matchers {
+class FileLoaderSpec extends AnyFreeSpec with Matchers {
   "FileLoader" - {
     "loads a list of file names from /test-resources" in {
       val paths = FileLoader.filesAt("/test-resources")
