@@ -14,7 +14,7 @@ scalaVersion := "2.12.3"
 
 crossScalaVersions := Seq("2.12.3", "2.13.2")
 
-externalResolvers := Seq(
+externalResolvers ++= Seq(
   Resolver.url(
     "Evolution Gaming (ivy)",
     url("http://rms.evolutiongaming.com/pub-ivy/")
