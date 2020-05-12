@@ -1,6 +1,7 @@
 package com.evolutiongaming.cassam
 
-import com.datastax.driver.core.{Cluster, Session}
+import com.datastax.driver.core.{Cluster, ConsistencyLevel}
+import com.evolutiongaming.pillar.Session
 
 /**
   * Simple cassandra client
@@ -14,7 +15,7 @@ private[cassam] class SimpleSyncClient(settings: CassandraConfig) {
       .withCredentials(settings.username, settings.password)
       .build()
 
-    val session = cluster.connect()
+    val session: Session = new Session(cluster.connect(), ConsistencyLevel.QUORUM)
     func(session)
   }
 }
